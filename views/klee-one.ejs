@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="klee-one-page">
+    <div class="page-shell">
+      <header class="page-header">
+        <div class="header-inner">
+          <h1><%= title %></h1>
+          <p class="subtitle">
+            Klee One フォントで仕上げたヘッダーとコンテンツのレイアウトです。
+          </p>
+        </div>
+      </header>
+
+      <main class="page-main">
+        <section class="content">
+          <div class="input-row">
+            <label for="kleeInput" class="input-label">テキストを入力:</label>
+            <input
+              id="kleeInput"
+              class="text-input"
+              type="text"
+              placeholder="ここに文字を入力"
+            />
+            <button
+              id="enlargeButton"
+              class="button enlarge-button"
+              type="button"
+            >
+              拡大表示
+            </button>
+          </div>
+
+          <div class="output-area" aria-live="polite">
+            <p id="bigText" class="big-text"></p>
+          </div>
+
+          <p>
+            このページは Node.js と Express で構築され、EJS
+            テンプレートをレンダリングします。
+          </p>
+          <a
+            class="button"
+            href="https://github.com/hello818198/helloworld-HomePage"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub リポジトリを見る
+          </a>
+        </section>
+      </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/klee-one.js"></script>
+  </body>
+</html>
