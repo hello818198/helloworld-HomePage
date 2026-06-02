@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body class="klee-one-page">
@@ -15,6 +16,20 @@
             Klee One フォントで仕上げたヘッダーとコンテンツのレイアウトです。
           </p>
         </div>
+        <nav class="header-nav">
+          <a href="/" class="nav-link">ホーム</a>
+          <a href="/memo" class="nav-link">メモ帳</a>
+          <a href="/contact" class="nav-link">お問い合わせ</a>
+          <a
+            href="#"
+            class="nav-link"
+            onclick="
+              window.location.reload();
+              return false;
+            "
+            >再読み込み</a
+          >
+        </nav>
       </header>
 
       <main class="page-main">

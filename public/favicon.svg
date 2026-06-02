@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Background -->
+  <rect width="192" height="192" fill="#fef9e7" rx="40"/>
+  
+  <!-- Memo paper -->
+  <rect x="40" y="30" width="112" height="140" fill="#fde047" rx="8"/>
+  
+  <!-- Lines on memo -->
+  <line x1="55" y1="60" x2="137" y2="60" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+  <line x1="55" y1="85" x2="137" y2="85" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+  <line x1="55" y1="110" x2="137" y2="110" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+  <line x1="55" y1="135" x2="110" y2="135" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Decorative circle in corner -->
+  <circle cx="155" cy="50" r="18" fill="#ef4444" opacity="0.8"/>
+</svg>

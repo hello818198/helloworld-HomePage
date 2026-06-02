@@ -1,0 +1,275 @@
+.memo-page {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.header-nav {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 8px 16px;
+  text-decoration: none;
+  background: #f0f4f8;
+  color: #2563eb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #e0e8f0;
+}
+
+.memo-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.input-label {
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.memo-textarea {
+  padding: 14px;
+  border: 2px solid #fef9e7 !important;
+  background: #fef9e7 !important;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  resize: vertical;
+}
+
+.memo-textarea:focus,
+.memo-textarea:focus-visible,
+.memo-textarea:-moz-focusring {
+  border-color: #fef9e7 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.create-button {
+  align-self: flex-start;
+  padding: 12px 28px;
+}
+
+.memo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.memo-card {
+  padding: 16px;
+  background: #fef9e7;
+  border: 2px solid #fde047;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.memo-card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 6;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.memo-card-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 12px;
+  border: 2px solid #fef9e7 !important;
+  background: #fef9e7 !important;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  resize: vertical;
+  outline: none !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.memo-card-textarea:focus,
+.memo-card-textarea:focus-visible,
+.memo-card-textarea:-moz-focusring {
+  border-color: #fef9e7 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.memo-card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #fde047;
+}
+
+.memo-view-button,
+.memo-delete-button {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.memo-view-button {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.memo-view-button:hover {
+  background: #1d4ed8;
+}
+
+.memo-delete-button {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.memo-delete-button:hover {
+  background: #dc2626;
+}
+
+/* モーダルスタイル */
+.memo-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.memo-modal.active {
+  display: flex;
+}
+
+.memo-window {
+  background: #fef9e7;
+  border: 3px solid #fde047;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.memo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 2px solid #fde047;
+}
+
+.memo-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.memo-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.memo-content p {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.6;
+  color: #333;
+}
+
+.memo-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-top: 2px solid #fde047;
+}
+
+.delete-button {
+  background: #ef4444;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+
+.delete-button:hover {
+  background: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .memo-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .memo-window {
+    width: 95%;
+  }
+}

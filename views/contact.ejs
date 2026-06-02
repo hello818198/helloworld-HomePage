@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="page-header">
+        <div class="header-inner">
+          <h1><%= title %></h1>
+          <p class="subtitle">ご意見・ご質問はこちらからお送りください。</p>
+        </div>
+        <nav class="header-nav">
+          <a href="/" class="nav-link">ホーム</a>
+          <a href="/memo" class="nav-link">メモ帳</a>
+          <a href="/klee-one" class="nav-link">Klee One</a>
+          <a href="#" class="nav-link" onclick="window.location.reload(); return false;">再読み込み</a>
+        </nav>
+      </header>
+
+      <main class="page-main">
+        <section class="content">
+          <% if (error) { %>
+            <p class="subtitle" style="color:#dc2626;"><%= error %></p>
+          <% } %>
+          <% if (message) { %>
+            <p class="subtitle" style="color:#16a34a;"><%= message %></p>
+          <% } %>
+          <form action="/contact" method="POST">
+            <div class="input-row">
+              <label for="name" class="input-label">お名前</label>
+              <input id="name" name="name" class="text-input" type="text" required />
+            </div>
+            <div class="input-row">
+              <label for="email" class="input-label">メール</label>
+              <input id="email" name="email" class="text-input" type="email" required />
+            </div>
+            <div class="input-row" style="flex-direction: column; align-items: stretch; gap: 12px;">
+              <label for="message" class="input-label">お問い合わせ内容</label>
+              <textarea id="message" name="message" class="text-input" rows="8" style="min-height: 180px; resize: vertical;" required></textarea>
+            </div>
+            <button type="submit" class="button">送信する</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

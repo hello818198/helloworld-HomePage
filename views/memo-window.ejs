@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: #fef9e7;
+        color: #111;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        background: #fde047;
+        padding: 18px 20px;
+        border-bottom: 2px solid #fcd34d;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 1.4rem;
+      }
+      .main {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .memo-textarea {
+        width: 100%;
+        min-height: 300px;
+        padding: 16px;
+        border-radius: 14px;
+        border: 2px solid #fef9e7 !important;
+        resize: none;
+        font-size: 1rem;
+        line-height: 1.7;
+        background: #fef9e7 !important;
+        outline: none !important;
+        box-shadow: none !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+      }
+      .memo-textarea:focus,
+      .memo-textarea:focus-visible,
+      .memo-textarea:-moz-focusring {
+        border-color: #fef9e7 !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+      .memo-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+      button {
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .close-btn {
+        background: #2564eb;
+        color: #fff;
+      }
+      .close-btn:hover {
+        background: #1d4ed8;
+      }
+      .message {
+        color: #475569;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <textarea id="memoWindowTextarea" class="memo-textarea"></textarea>
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const memoIndex = Number(params.get("index"));
+      const textarea = document.getElementById("memoWindowTextarea");
+      //const closeButton = document.getElementById("closeWindowButton");
+
+      const loadMemos = () => {
+        const memos = JSON.parse(localStorage.getItem("memos") || "[]");
+        return memos;
+      };
+
+      const saveMemos = (memos) => {
+        localStorage.setItem("memos", JSON.stringify(memos));
+      };
+
+      const updateParent = (index, value) => {
+        if (window.opener && !window.opener.closed) {
+          window.opener.postMessage(
+            { type: "memoChanged", index, content: value },
+            "*",
+          );
+        }
+      };
+
+      const loadMemo = () => {
+        const memos = loadMemos();
+        if (
+          !Number.isFinite(memoIndex) ||
+          memoIndex < 0 ||
+          memoIndex >= memos.length
+        ) {
+          textarea.value = "";
+          textarea.disabled = true;
+          return;
+        }
+        textarea.value = memos[memoIndex];
+      };
+
+      const debounce = (fn, delay = 250) => {
+        let timer;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => fn(...args), delay);
+        };
+      };
+
+      const saveCurrentMemo = debounce((value) => {
+        const memos = loadMemos();
+        if (
+          !Number.isFinite(memoIndex) ||
+          memoIndex < 0 ||
+          memoIndex >= memos.length
+        ) {
+          return;
+        }
+        memos[memoIndex] = value;
+        saveMemos(memos);
+        updateParent(memoIndex, value);
+      }, 200);
+
+      textarea.addEventListener("input", (event) => {
+        saveCurrentMemo(event.target.value);
+      });
+
+      /*closeButton.addEventListener("click", () => {
+        window.close();
+      });*/
+
+      window.addEventListener("beforeunload", () => {
+        // リロードや移動時に画面が真っ白になるのを避けるため、ウィンドウを閉じる
+        if (!window.opener || window.opener.closed) return;
+        window.opener.postMessage(
+          { type: "popupClosed", index: memoIndex },
+          "*",
+        );
+      });
+
+      loadMemo();
+    </script>
+  </body>
+</html>

@@ -4,36 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <header>
-      <h1><%= title %></h1>
-      <% if (typeof message !== "undefined" && message) { %>
-        <p class="subtitle"><%= message %></p>
-      <% } else { %>
-        <p class="subtitle">Express と EJS を使ったシンプルなホームページです。</p>
-      <% } %>
-    </header>
+    <div class="page-shell">
+      <header class="page-header">
+        <div class="header-inner">
+          <h1><%= title %></h1>
+          <% if (typeof message !== "undefined" && message) { %>
+            <p class="subtitle"><%= message %></p>
+          <% } else { %>
+            <p class="subtitle">Express と EJS を使ったシンプルなホームページです。</p>
+          <% } %>
+        </div>
+        <nav class="header-nav">
+          <a href="/memo" class="nav-link">メモ帳</a>
+          <a href="/klee-one" class="nav-link">Klee One</a>
+          <a href="/contact" class="nav-link">お問い合わせ</a>
+          <a href="#" class="nav-link" onclick="window.location.reload(); return false;">再読み込み</a>
+        </nav>
+      </header>
 
-    <main>
-      <section class="content">
-        <p>
-          このページは Node.js と Express で構築され、EJS テンプレートをレンダリングします。
-        </p>
-        <a
-          class="button"
-          href="https://github.com/hello818198/helloworld-HomePage"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub リポジトリを見る
-        </a>
-      </section>
-    </main>
-<a href="./klee-one" class="klee-one-regular">教科書体確認</a>
-
-
+      <main class="page-main">
+        <section class="content">
+          <p>
+            このページは Node.js と Express で構築され、EJS テンプレートをレンダリングします。
+          </p>
+          <a
+            class="button"
+            href="https://github.com/hello818198/helloworld-HomePage"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub リポジトリを見る
+          </a>
+        </section>
+      </main>
+    </div>
 
     <script src="/js/app.js"></script>
   </body>

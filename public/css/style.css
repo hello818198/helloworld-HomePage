@@ -37,6 +37,30 @@ body {
   padding: 36px 32px;
 }
 
+.header-nav {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 8px 14px;
+  text-decoration: none;
+  background: #f0f4f8;
+  color: #2563eb;
+  border-radius: 999px;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #e0e8f0;
+  color: #1d4ed8;
+}
+
 .page-main {
   display: grid;
   gap: 24px;
