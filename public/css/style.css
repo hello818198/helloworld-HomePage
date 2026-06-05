@@ -61,6 +61,25 @@ body {
   color: #1d4ed8;
 }
 
+.nav-link.coming-soon {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.nav-link.coming-soon::after {
+  content: "近日公開";
+  position: absolute;
+  top: -26px;
+  right: 0;
+  white-space: nowrap;
+  background: #fde047;
+  color: #111;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
 .page-main {
   display: grid;
   gap: 24px;
